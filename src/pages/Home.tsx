@@ -30,12 +30,12 @@ const Home = () => {
 
   return (
     <>
-      <div>
-        {/* {data?.results?.map((item, i) => {
+      <div className='flex justify-center items-center gap-4'>
+        {data?.results?.map((item, i) => {
           <>
-            <div className='border-2 shadow-xl p-4'>{item?.title}</div>
+            <div className='border-2 shadow-xl p-4 bg-gray-500'>{item?.title}</div>
           </>;
-        })} */}
+        })}
       </div>
     </>
   );
