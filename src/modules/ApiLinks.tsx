@@ -4,3 +4,17 @@ export const apiToken =
 export const apiKey = 'd8786b5a554151de5780c5d28f86c6d7';
 
 export const baseUrl = 'https://api.themoviedb.org/3';
+
+export const imgLink = 'https://image.tmdb.org/t/p/original';
+
+// movies endpoints
+export const nowPlaying = `${baseUrl}/movie/now_playing?language=en-US&page=1`;
+export const popular = `${baseUrl}/movie/popular`;
+export const upcoming = `${baseUrl}/movie/upcoming`;
+export const topRatedMovies = `${baseUrl}/movie/top_rated`;
+
+// tv shows endpoints
+export const airingTodayShows = `${baseUrl}/tv/airing_today`;
+export const popularShow = `${baseUrl}/tv/popular`;
+export const onTheAirShows = `${baseUrl}/tv/on_the_air`;
+export const topRatedShows = `${baseUrl}/tv/top_rated`;

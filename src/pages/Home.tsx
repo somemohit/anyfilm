@@ -1,7 +1,16 @@
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
-import {apiToken, baseUrl} from '../modules/ApiLinks';
+import {
+  apiToken,
+  baseUrl,
+  imgLink,
+  nowPlaying,
+  popular,
+  topRatedMovies,
+  upcoming,
+} from '../modules/ApiLinks';
 import {AiOutlineInfoCircle} from 'react-icons/ai';
+import DisplayCard from '../components/DisplayCard';
 
 const Home = () => {
   const [movieData, setMovieData] = useState({
@@ -9,8 +18,28 @@ const Home = () => {
     title: '',
     overview: '',
   });
+  const [nowPlayingMovieData, setNowPlayingMovieData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const categoryData = [
+    {
+      categoryEndpoint: nowPlaying,
+      categoryName: 'Now Playing',
+    },
+    {
+      categoryEndpoint: popular,
+      categoryName: 'Popular',
+    },
+    {
+      categoryEndpoint: upcoming,
+      categoryName: 'Upcoming',
+    },
+    {
+      categoryEndpoint: topRatedMovies,
+      categoryName: 'Top Rated Movies',
+    },
+  ];
 
   const fetchData = async () => {
     try {
@@ -38,8 +67,25 @@ const Home = () => {
     }
   };
 
+  const fetchNowPlayingData = async () => {
+    try {
+      const response = await axios.get(nowPlaying, {
+        headers: {
+          Authorization: `Bearer ${apiToken}`,
+        },
+      });
+      console.log(response, 'now playing');
+      setNowPlayingMovieData(response?.data?.results);
+      setLoading(false);
+    } catch (error) {
+      setError(error);
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    fetchData(); // Call the async function
+    fetchData();
+    fetchNowPlayingData();
   }, []);
 
   console.log(movieData, 'movieData');
@@ -83,6 +129,25 @@ const Home = () => {
             </div>
           );
         })} */}
+      </div>
+
+      <div className="flex flex-col gap-2 bg-gray-900 py-6">
+        {categoryData?.map((item) => {
+          return (
+            <>
+              <div className="py-10">
+                {/* Now Playing Section */}
+                <div className="w-full flex items-center justify-start py-4">
+                  <div className="flex items-center justify-center w-fit h-10 px-10 py-4 bg-gradient-to-r from-red-900 via-red-700 to-red-500 text-white">
+                    {item?.categoryName}
+                  </div>
+                </div>
+
+                <DisplayCard categoryEndpoint={item?.categoryEndpoint} />
+              </div>
+            </>
+          );
+        })}
       </div>
     </>
   );
