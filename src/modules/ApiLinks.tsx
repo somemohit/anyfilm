@@ -12,6 +12,7 @@ export const nowPlaying = `${baseUrl}/movie/now_playing?language=en-US&page=1`;
 export const popular = `${baseUrl}/movie/popular`;
 export const upcoming = `${baseUrl}/movie/upcoming`;
 export const topRatedMovies = `${baseUrl}/movie/top_rated`;
+export const search = `${baseUrl}/search/movie`;
 
 // tv shows endpoints
 export const airingTodayShows = `${baseUrl}/tv/airing_today`;
