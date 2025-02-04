@@ -13,6 +13,8 @@ export const popular = `${baseUrl}/movie/popular`;
 export const upcoming = `${baseUrl}/movie/upcoming`;
 export const topRatedMovies = `${baseUrl}/movie/top_rated`;
 export const search = `${baseUrl}/search/movie`;
+export const movieDetails = (movie_id :string) => `${baseUrl}/movie/${movie_id}`;
+export const movieCredits = (movie_id :string) => `${baseUrl}/movie/${movie_id}/credits`;
 
 // tv shows endpoints
 export const airingTodayShows = `${baseUrl}/tv/airing_today`;

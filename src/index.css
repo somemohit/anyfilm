@@ -1,1 +1,6 @@
+@import 'tailwindcss';
 
+@theme {
+    --font-bebas: "Bebas Neue", "serif";
+    --font-anton: "Anton", "serif";
+  }

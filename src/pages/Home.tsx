@@ -11,13 +11,16 @@ import {
 import DisplayCard from '../components/DisplayCard';
 import TopMainBanner from '../components/TopMainBanner';
 import CategoryStripBanner from '../components/CategoryStripBanner';
+import ModalComponent from '../components/ModalComponent';
 
 const Home = () => {
   const [movieData, setMovieData] = useState({
     backdropPath: '',
     title: '',
     overview: '',
+    id: ''
   });
+  const [openModal, setOpenModal] = useState(false);
 
   const categoryData = [
     {
@@ -50,11 +53,11 @@ const Home = () => {
         bannerApiUrl={popular}
       />
 
-      <div className="flex flex-col gap-2 bg-gray-900 py-6">
+      <div className="flex flex-col gap-2 bg-gray-900 py-2 sm:py-6">
         {categoryData?.map((item) => {
           return (
             <>
-              <div className="py-10">
+              <div className="py-4 sm:py-10">
                 <CategoryStripBanner categoryName={item?.categoryName} />
                 <DisplayCard categoryEndpoint={item?.categoryEndpoint} />
               </div>
@@ -62,6 +65,13 @@ const Home = () => {
           );
         })}
       </div>
+
+      <ModalComponent
+        isModalOpen={openModal}
+        closeModal={() => setOpenModal(false)}
+      >
+        <div>ggggggg</div>
+      </ModalComponent>
     </>
   );
 };

@@ -42,11 +42,11 @@ const TvShows = () => {
         setBannerData={setTvShowData}
         bannerApiUrl={popularShow}
       />
-      <div className="flex flex-col gap-2 bg-gray-900 py-6">
+      <div className="flex flex-col gap-2 bg-gray-900 py-2 sm:py-6">
         {categoryData?.map((item) => {
           return (
             <>
-              <div key={item?.categoryName} className="py-10">
+              <div key={item?.categoryName} className="py-4 sm:py-10">
                 <CategoryStripBanner categoryName={item?.categoryName} />
                 <DisplayCard categoryEndpoint={item?.categoryEndpoint} />
               </div>
