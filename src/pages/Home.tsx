@@ -1,26 +1,23 @@
-import axios from 'axios';
-import React, {useEffect, useState} from 'react';
+import {useState} from 'react';
 import {
   nowPlaying,
   popular,
   popularShow,
   topRatedMovies,
   topRatedShows,
-  upcoming,
 } from '../modules/ApiLinks';
 import DisplayCard from '../components/DisplayCard';
 import TopMainBanner from '../components/TopMainBanner';
 import CategoryStripBanner from '../components/CategoryStripBanner';
-import ModalComponent from '../components/ModalComponent';
+import {MovieData} from '../modules/types_file';
 
 const Home = () => {
-  const [movieData, setMovieData] = useState({
+  const [movieData, setMovieData] = useState<MovieData>({
     backdropPath: '',
     title: '',
     overview: '',
     id: '',
   });
-  const [openModal, setOpenModal] = useState(false);
 
   const categoryData = [
     {

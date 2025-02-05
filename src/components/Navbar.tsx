@@ -2,11 +2,11 @@ import React, {useState} from 'react';
 import {NavLink, useLocation, useNavigate} from 'react-router-dom';
 import {MdOutlineSearch} from 'react-icons/md';
 import {PiFilmReelLight} from 'react-icons/pi';
-import {GiHamburgerMenu} from 'react-icons/gi';
+// import {GiHamburgerMenu} from 'react-icons/gi';
 import {Link} from 'react-router-dom';
 
 const Navbar = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  // const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
   const location = useLocation();
@@ -27,7 +27,7 @@ const Navbar = () => {
     },
   ];
 
-  const handleSearchChange = (e) => {
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
   };
 
@@ -60,6 +60,7 @@ const Navbar = () => {
                 return (
                   <>
                     <NavLink
+                      key={i}
                       to={pathObj?.path}
                       className={`${
                         pathObj?.path === location?.pathname

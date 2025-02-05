@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {
   apiToken,
-  baseUrl,
   imgLink,
   movieCredits,
   movieDetails,
@@ -12,10 +11,23 @@ import {AiOutlineInfoCircle} from 'react-icons/ai';
 import axios from 'axios';
 import ModalComponent from './ModalComponent';
 import PopUpAllDetails from './PopUpAllDetails';
+import {MovieData} from '../modules/types_file';
 
-const TopMainBanner = ({bannerData, setBannerData, bannerApiUrl, category}) => {
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+type TopMainBannerProps = {
+  bannerData: MovieData;
+  setBannerData: React.Dispatch<React.SetStateAction<MovieData>>;
+  bannerApiUrl: string;
+  category: string;
+};
+
+const TopMainBanner: React.FC<TopMainBannerProps> = ({
+  bannerData,
+  setBannerData,
+  bannerApiUrl,
+  category,
+}) => {
+  // const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<unknown>(null);
   const [openModal, setOpenModal] = useState(false);
 
   const fetchData = async () => {
@@ -35,10 +47,10 @@ const TopMainBanner = ({bannerData, setBannerData, bannerApiUrl, category}) => {
         overview: randomMedia?.overview,
         id: randomMedia?.id,
       });
-      setLoading(false);
+      // setLoading(false);
     } catch (error) {
       setError(error);
-      setLoading(false);
+      // setLoading(false);
     }
   };
 
@@ -48,9 +60,10 @@ const TopMainBanner = ({bannerData, setBannerData, bannerApiUrl, category}) => {
 
   useEffect(() => {
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // console.log(movieCreditDetails, 'bannerData');
+  console.log(error, 'error');
 
   return (
     <>

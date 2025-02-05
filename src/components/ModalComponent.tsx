@@ -1,11 +1,15 @@
-import {useEffect, useState} from 'react';
+import {useEffect} from 'react';
 import ReactDOM from 'react-dom';
 
 import {AiOutlineCloseCircle} from 'react-icons/ai';
-import {ModalComponentProps} from '@/types/types';
-import {BsFillXCircleFill} from 'react-icons/bs';
+import {ModalComponentProps} from '../modules/types_file';
+// import {BsFillXCircleFill} from 'react-icons/bs';
 
-export default function ModalComponent({closeModal, children, isModalOpen}) {
+export default function ModalComponent({
+  closeModal,
+  children,
+  isModalOpen,
+}: ModalComponentProps) {
   useEffect(() => {
     if (isModalOpen) {
       document.body.style.overflowY = 'hidden';

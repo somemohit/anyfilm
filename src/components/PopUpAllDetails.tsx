@@ -1,21 +1,21 @@
-import React, {useEffect, useState} from 'react';
-import {
-  apiToken,
-  movieCredits,
-  movieDetails,
-  imgLink,
-} from '../modules/ApiLinks';
+import {useEffect, useState} from 'react';
+import {apiToken, imgLink} from '../modules/ApiLinks';
 import axios from 'axios';
 import moment from 'moment';
-import Loader from './Loader';
 import {Triangle} from 'react-loader-spinner';
+import {
+  MovieCreditDetails,
+  MovieDetails,
+  PopUpAllDetailsProps,
+} from '../modules/types_file';
 
-const PopUpAllDetails = ({
+const PopUpAllDetails: React.FC<PopUpAllDetailsProps> = ({
   contentDetailsEndpoint,
   contentCreditDetailsEndpoint,
 }) => {
-  const [movieAllDetails, setMovieAllDetails] = useState();
-  const [movieCreditDetails, setMovieCreditDetails] = useState();
+  const [movieAllDetails, setMovieAllDetails] = useState<MovieDetails>();
+  const [movieCreditDetails, setMovieCreditDetails] =
+    useState<MovieCreditDetails>();
   const [loading, setLoading] = useState(true);
 
   const getMovieData = async () => {
@@ -54,6 +54,7 @@ const PopUpAllDetails = ({
   useEffect(() => {
     getMovieData();
     getMovieCredits();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -80,16 +81,18 @@ const PopUpAllDetails = ({
                 </p>
                 <div className="flex items-center gap-1 text-sm">
                   <p className="text-white text-sm">Genres:</p>
-                  {movieAllDetails?.genres?.map((item, i) => {
-                    return (
-                      <p
-                        className="bg-gray-700 text-white rounded-full px-2 py-1 text-xs"
-                        key={item.id}
-                      >
-                        {item?.name}
-                      </p>
-                    );
-                  })}
+                  {movieAllDetails?.genres?.map(
+                    (item: {id: string; name: string}) => {
+                      return (
+                        <p
+                          className="bg-gray-700 text-white rounded-full px-2 py-1 text-xs"
+                          key={item.id}
+                        >
+                          {item?.name}
+                        </p>
+                      );
+                    }
+                  )}
                 </div>
               </div>
               <div>
@@ -129,28 +132,39 @@ const PopUpAllDetails = ({
               Cast
             </p>
             <div className="flex flex-wrap justify-center items-start gap-2">
-              {movieCreditDetails?.cast?.slice(0, 20).map((item, i) => {
-                return (
-                  <div
-                    className="w-20 flex flex-col justify-center items-center"
-                    key={item?.credit_id}
-                  >
-                    <img
-                      src={`${
-                        item?.profile_path
-                          ? `${imgLink}${item?.profile_path}`
-                          : 'no-img.jpg'
-                      }`}
-                      className="w-12 sm:w-16 md:w-16 lg:w-16 object-cover object-center border-2 rounded-full h-12 sm:h-16 md:h-16 lg:h-16"
-                      alt="movie-img"
-                    />{' '}
-                    <div className="text-center flex flex-col justify-center items-center gap-1">
-                      <p className="text-sm text-white">{item?.name}</p>
-                      <p className="text-xs text-gray-200">{item?.character}</p>
-                    </div>
-                  </div>
-                );
-              })}
+              {movieCreditDetails?.cast
+                ?.slice(0, 20)
+                .map(
+                  (item: {
+                    credit_id: string;
+                    profile_path: string;
+                    name: string;
+                    character: string;
+                  }) => {
+                    return (
+                      <div
+                        className="w-20 flex flex-col justify-center items-center"
+                        key={item?.credit_id}
+                      >
+                        <img
+                          src={`${
+                            item?.profile_path
+                              ? `${imgLink}${item?.profile_path}`
+                              : 'no-img.jpg'
+                          }`}
+                          className="w-12 sm:w-16 md:w-16 lg:w-16 object-cover object-center border-2 rounded-full h-12 sm:h-16 md:h-16 lg:h-16"
+                          alt="movie-img"
+                        />{' '}
+                        <div className="text-center flex flex-col justify-center items-center gap-1">
+                          <p className="text-sm text-white">{item?.name}</p>
+                          <p className="text-xs text-gray-200">
+                            {item?.character}
+                          </p>
+                        </div>
+                      </div>
+                    );
+                  }
+                )}
             </div>
           </div>
         ) : null}
