@@ -20,18 +20,22 @@ const Movies = () => {
     {
       categoryEndpoint: nowPlaying,
       categoryName: 'Now Playing',
+      category: 'movie',
     },
     {
       categoryEndpoint: popular,
       categoryName: 'Popular',
+      category: 'movie',
     },
     {
       categoryEndpoint: upcoming,
       categoryName: 'Upcoming',
+      category: 'movie',
     },
     {
       categoryEndpoint: topRatedMovies,
       categoryName: 'Top Rated Movies',
+      category: 'movie',
     },
   ];
 
@@ -41,6 +45,7 @@ const Movies = () => {
         bannerData={movieData}
         setBannerData={setMovieData}
         bannerApiUrl={popular}
+        category={'movie'}
       />
       <div className="flex flex-col gap-2 bg-gray-900 py-2 sm:py-6">
         {categoryData?.map((item) => {
@@ -48,7 +53,10 @@ const Movies = () => {
             <>
               <div className="py-4 sm:py-10">
                 <CategoryStripBanner categoryName={item?.categoryName} />
-                <DisplayCard categoryEndpoint={item?.categoryEndpoint} />
+                <DisplayCard
+                  categoryEndpoint={item?.categoryEndpoint}
+                  category={item?.category}
+                />
               </div>
             </>
           );

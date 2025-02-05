@@ -1,15 +1,26 @@
 import React, {useEffect, useState} from 'react';
-import {apiToken, imgLink} from '../modules/ApiLinks';
+import {
+  apiToken,
+  imgLink,
+  movieCredits,
+  movieDetails,
+  tvShowCredits,
+  tvShowDetails,
+} from '../modules/ApiLinks';
 import axios from 'axios';
 import {FaChevronLeft, FaChevronRight} from 'react-icons/fa';
 import Loader from './Loader';
 import moment from 'moment';
+import ModalComponent from './ModalComponent';
+import PopUpAllDetails from './PopUpAllDetails';
 
-const DisplayCard = ({categoryEndpoint}) => {
+const DisplayCard = ({categoryEndpoint, category}) => {
   const [movieCardData, setMovieCardData] = useState();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [count, setCount] = useState(0);
+  const [openModal, setOpenModal] = useState(false);
+  const [contentId, setContentId] = useState('');
 
   const fetchMovieCardData = async () => {
     setLoading(true);
@@ -26,6 +37,11 @@ const DisplayCard = ({categoryEndpoint}) => {
       setError(error);
       setLoading(false);
     }
+  };
+
+  const handleDisplayCardClick = (id) => {
+    setOpenModal(true);
+    setContentId(id);
   };
 
   const handleNext = () => {
@@ -60,7 +76,8 @@ const DisplayCard = ({categoryEndpoint}) => {
               return (
                 <div
                   key={i}
-                  className="relative hover:border-2 rounded-lg shadow-xl bg-gray-800 h-fit min-w-[150px] sm:min-w-[200px] md:min-w-[220px] lg:min-w-[260px] hover:scale-110 ease-in-out duration-300"
+                  onClick={() => handleDisplayCardClick(item?.id)}
+                  className="relative cursor-pointer hover:border-2 rounded-lg shadow-xl bg-gray-800 h-fit min-w-[150px] sm:min-w-[200px] md:min-w-[220px] lg:min-w-[260px] hover:scale-110 ease-in-out duration-300"
                 >
                   <img
                     src={`${
@@ -75,7 +92,9 @@ const DisplayCard = ({categoryEndpoint}) => {
                     {item?.vote_average.toFixed(1)}{' '}
                   </div>
                   <div className="absolute bottom-0 left-0 bg-red-500/10 backdrop-blur-xs w-full rounded-bl-lg rounded-br-lg px-4 py-2 text-white text-sm text-center">
-                    <p className="text-sm sm:text-base font-bold truncate">{item?.title || item?.name}</p>
+                    <p className="text-sm sm:text-base font-bold truncate">
+                      {item?.title || item?.name}
+                    </p>
                     <p className="text-xs">
                       {moment(item.release_date).format('MMMM Do YYYY')}
                     </p>
@@ -100,6 +119,24 @@ const DisplayCard = ({categoryEndpoint}) => {
           <FaChevronRight size={24} />
         </button>
       </div>
+
+      <ModalComponent
+        isModalOpen={openModal}
+        closeModal={() => setOpenModal(false)}
+      >
+        <PopUpAllDetails
+          contentDetailsEndpoint={
+            category === 'tv'
+              ? tvShowDetails(contentId)
+              : movieDetails(contentId)
+          }
+          contentCreditDetailsEndpoint={
+            category === 'tv'
+              ? tvShowCredits(contentId)
+              : movieCredits(contentId)
+          }
+        />
+      </ModalComponent>
 
       {loading && <Loader />}
     </>

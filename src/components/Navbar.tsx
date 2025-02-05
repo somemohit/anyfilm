@@ -3,6 +3,7 @@ import {NavLink, useLocation, useNavigate} from 'react-router-dom';
 import {MdOutlineSearch} from 'react-icons/md';
 import {PiFilmReelLight} from 'react-icons/pi';
 import {GiHamburgerMenu} from 'react-icons/gi';
+import {Link} from 'react-router-dom';
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -42,13 +43,16 @@ const Navbar = () => {
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-1 justify-between items-center w-full mx-auto px-4 sm:px-12 md:px-20">
           <div className="flex justify-between w-full sm:w-3/5">
             {/* Logo */}
-            <div className="font-bold flex justify-center gap-1 items-center">
+            <Link
+              to="/"
+              className="font-bold flex justify-center gap-1 items-center"
+            >
               <div className="flex text-xl sm:text-3xl">
                 <p className="text-white">Any</p>
                 <p className="text-red-500">Film</p>
               </div>
               <PiFilmReelLight className="text-xl sm:text-3xl" />
-            </div>
+            </Link>
 
             {/* Navbar Links */}
             <div className={`flex items-center space-x-6 sm:space-x-8 sm:flex`}>
