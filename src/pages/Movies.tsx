@@ -14,6 +14,7 @@ const Movies = () => {
     backdropPath: '',
     title: '',
     overview: '',
+    id: '',
   });
 
   const categoryData = [
