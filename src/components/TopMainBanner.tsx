@@ -63,7 +63,7 @@ const TopMainBanner: React.FC<TopMainBannerProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log(error, 'error');
+  console.log(error, 'errors');
 
   return (
     <>
