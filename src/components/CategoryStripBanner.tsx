@@ -1,6 +1,8 @@
-import React from 'react';
+import {CategoryStripBannerProps} from '../modules/types_file';
 
-const CategoryStripBanner = ({categoryName}) => {
+const CategoryStripBanner: React.FC<CategoryStripBannerProps> = ({
+  categoryName,
+}) => {
   return (
     <>
       <div className="w-full flex items-center justify-start py-4">

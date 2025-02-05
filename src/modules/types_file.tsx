@@ -37,3 +37,7 @@ export type MovieData = {
   overview: string;
   id: string;
 };
+
+export type CategoryStripBannerProps = {
+  categoryName: string;
+};
