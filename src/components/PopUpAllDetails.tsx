@@ -155,7 +155,7 @@ const PopUpAllDetails: React.FC<PopUpAllDetailsProps> = ({
                           className="w-12 sm:w-16 md:w-16 lg:w-16 object-cover object-center border-2 rounded-full h-12 sm:h-16 md:h-16 lg:h-16"
                           alt="movie-img"
                         />{' '}
-                        <div className="text-center flex flex-col justify-center items-center gap-1">
+                        <div className="text-center flex flex-col justify-center items-center">
                           <p className="text-sm text-white">{item?.name}</p>
                           <p className="text-xs text-gray-200">
                             {item?.character}
