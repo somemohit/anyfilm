@@ -67,14 +67,14 @@ const TopMainBanner: React.FC<TopMainBannerProps> = ({
 
   return (
     <>
-      <div className="relative h-screen flex justify-start items-center p-8 sm:p-16 md:p-20">
+      <div className="relative h-screen bg-gray-900 flex justify-start items-center p-8 sm:p-16 md:p-20">
         {/* Background container with the overlay */}
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{backgroundImage: `url(${bannerData?.backdropPath})`}}
         >
           {/* Overlay for slight dark effect */}
-          <div className="absolute inset-0 bg-black opacity-30"></div>
+          <div className="absolute inset-0 bg-black opacity-20"></div>
         </div>
 
         {/* Content */}
@@ -88,7 +88,7 @@ const TopMainBanner: React.FC<TopMainBannerProps> = ({
 
           <button
             onClick={handleMoreInfoClick}
-            className="w-fit cursor-pointer flex items-center gap-2 px-4 py-2 border rounded-full bg-gray-500 hover:bg-gray-400 text-white transition duration-300 ease-in-out"
+            className="w-fit cursor-pointer flex items-center gap-2 px-4 py-2 border rounded-full bg-transparent hover:bg-gray-500/40 text-white transition duration-300 ease-in-out"
           >
             <AiOutlineInfoCircle className="text-xl" />
             <span className="text-sm sm:text-lg">More Info</span>

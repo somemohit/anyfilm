@@ -39,7 +39,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="fixed left-0 top-0 z-50 w-full bg-gradient-to-b from-black/70 to-transparent text-white p-4">
+      <div className="fixed left-0 top-0 z-50 w-full bg-gradient-to-b from-black/90 to-black/30 sm:from-black/70 sm:to-transparent text-white p-4">
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-1 justify-between items-center w-full mx-auto px-4 sm:px-12 md:px-20">
           <div className="flex justify-between w-full sm:w-3/5">
             {/* Logo */}

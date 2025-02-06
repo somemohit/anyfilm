@@ -60,7 +60,7 @@ const Search = () => {
 
   return (
     <>
-      {searchData?.length && (
+      {searchData?.length ? (
         <>
           <div className="bg-gray-900 h-fit min-h-screen flex flex-wrap justify-center items-start gap-4 sm:gap-12 pt-32 sm:pt-24 max-w-full mx-auto px-2 sm:px-8 py-8">
             {searchData?.map(
@@ -105,6 +105,17 @@ const Search = () => {
             )}
           </div>
         </>
+      ) : (
+        <div className="bg-gray-900 flex flex-col justify-center items-center h-screen">
+          <p className="text-xl sm:text-3xl font-bold text-white text-center">
+            Sorry, no results found. Please check spelling and try again.
+          </p>
+          <img
+            src="noresults.png"
+            className="w-4/5 sm:w-1/3 h-auto object-cover object-center rounded-lg"
+            alt="movie-img"
+          />
+        </div>
       )}
 
       <ModalComponent

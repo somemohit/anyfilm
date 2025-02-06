@@ -28,7 +28,7 @@ export default function ModalComponent({
       <button className={`fixed top-6 right-6 z-[1000]`} onClick={closeModal}>
         <AiOutlineCloseCircle className="text-4xl text-white" />
       </button>
-      <div className="fixed p-2 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[1000] shadow-lg overflow-y-auto w-full md:w-fit lg:w-fit max-w-[95vw] lg:max-w-[90vw] max-h-[80vh] lg:max-h-[95vh] bg-gray-900 rounded-lg">
+      <div className="modal-content fixed p-2 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[1000] shadow-lg overflow-y-auto w-full md:w-fit lg:w-fit max-w-[95vw] lg:max-w-[90vw] max-h-[80vh] lg:max-h-[95vh] bg-gray-900 rounded-lg">
         {children}
       </div>
     </>
