@@ -4,3 +4,57 @@
 .scroll-hide::-webkit-scrollbar {
   display: none;
 }
+
+/* WebKit Browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #fb2c36;
+  border-radius: 50%;
+  border: 3px solid #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c10007;
+}
+
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #c10007 #f1f1f1;
+}
+
+/* code for modal scrollbar starts */
+/* WebKit Browsers */
+.modal-content::-webkit-scrollbar {
+  width: 8px; /* Adjust the width as needed */
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Light gray background */
+  border-radius: 10px; /* Rounded corners */
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: #fb2c36; /* Darker gray */
+  border-radius: 50%; /* Rounded corners */
+  border: 3px solid #f1f1f1; /* Border matching the track */
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: #c10007; /* Even darker gray */
+}
+
+/* Firefox */
+.modal-content {
+  scrollbar-width: thin; /* Options: auto, thin, none */
+  scrollbar-color: #c10007 #f1f1f1; /* Thumb color and track color */
+}
+/* code for modal scrollbar ends */
