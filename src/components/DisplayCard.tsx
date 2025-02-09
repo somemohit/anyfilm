@@ -104,7 +104,7 @@ const DisplayCard: React.FC<DisplayCardProps> = ({
                           : 'no-img.jpg'
                       }`}
                       className="w-full object-cover object-center rounded-lg h-56 sm:h-64 md:h-72 lg:h-[380px]"
-                      alt="movie-img"
+                      alt="movie-image"
                     />
                     <div className="absolute -top-2 -left-2 border rounded-md bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 px-3 py-1 text-xs text-white">
                       {item?.vote_average.toFixed(1)}{' '}
